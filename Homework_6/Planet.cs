@@ -8,7 +8,7 @@ namespace Homework_6
 {
     internal class Planet
     {
-        public Planet(string name, int number, int equatorLength, string lastPlanet)
+        public Planet(string name, int number, int equatorLength, Planet? lastPlanet)
         {
             Name = name;
             Number = number;
@@ -16,12 +16,12 @@ namespace Homework_6
             LastPlanet = lastPlanet;
         }
 
-        public string Name  { get; }
+        public string Name  { get; set; }
 
         public int Number { get; }
 
         public int EquatorLength { get; }
 
-        public string LastPlanet { get; }
+        public Planet? LastPlanet { get; }
     }
 }

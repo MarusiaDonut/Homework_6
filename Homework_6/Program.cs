@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using System.Threading.Channels;
 
 namespace Homework_6
 {
@@ -6,7 +7,50 @@ namespace Homework_6
     {
         static void Main(string[] args)
         {
+            int count = 0;
+
+
             Program1();
+            Console.WriteLine("_____________________________");
+
+            CatalogPlanet planet = new CatalogPlanet();
+            var (equatorLength, number, exception) = planet.GetPlanet("Земля");
+            Console.WriteLine(equatorLength + " " + number + " " + exception);
+            var (equatorLength1, number1, exception1) = planet.GetPlanet("Лимония");
+            Console.WriteLine(equatorLength1 + " " + number1 + " " + exception1);
+            var (equatorLength2, number2, exception2) = planet.GetPlanet("Марс");
+            Console.WriteLine(equatorLength2 + " " + number2 + " " + exception2);
+
+            Console.WriteLine("_____________________________");
+
+            var (equatorLength3, number3, exception3) = planet.GetPlanetTwo("Земля", name =>
+            {
+                count++;
+                if (count == 3)
+                {
+                    Console.WriteLine("Вы спрашиваете слишком часто.");
+                }
+            });
+            Console.WriteLine(equatorLength3 + " " + number3 + " " + exception3);
+            var (equatorLength4, number4, exception4) = planet.GetPlanetTwo("Лимония", name =>
+            {
+                count++;
+                if (count == 3)
+                {
+                    Console.WriteLine("Вы спрашиваете слишком часто.");
+                }
+            });
+            Console.WriteLine(equatorLength4 + " " + number4 + " " + exception4);
+            var (equatorLength5, number5, exception5) = planet.GetPlanetTwo("Марс", name =>
+            {
+                count++;
+                if (count == 3)
+                {
+                    Console.WriteLine("Вы спрашиваете слишком часто.");
+                }
+            });
+            Console.WriteLine(equatorLength5 + " " + number5 + " " + exception5);
+
         }
 
 
